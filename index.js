@@ -43,7 +43,7 @@ async function init() {
 
         //const cell = await tonweb.dns.resolve('foundation.ton', TonWeb.dns.DNS_CATEGORY_NEXT_RESOLVER, true);
         const cell = await tonweb.dns.resolve('foundation.ton', 'site', false);
-        console.log('foundation.ton site address: ', cell);
+        console.log('foundation.ton site ADNL address: ', cell.toHex());
         //const cell = await tonweb.dns.resolve(s, TonWeb.dns.DNS_CATEGORY_NEXT_RESOLVER, true);
     }
 
