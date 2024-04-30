@@ -29,7 +29,9 @@ class DnsRoot extends Contract {
 }
 
 async function init() {
-    const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: '335ff991ba418c8756f2aabace5f20a60fcc9417355bbf0f91b86ae6470b2955'}));
+    Warning: First you need to GET YOUR OWN API key from TG bot: @tonapibot and paste it below:;
+    const API_KEY = '335ff991ba418c8756f2aabace5f20a60fcc9417355bbf0f91b86ae6470b2955';
+    const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: API_KEY}));
 
     const dnsResolve = async () => {
         // const testnetRootDnsAddress = 'Ef_v5x0Thgr6pq6ur2NvkWhIf4DxAxsL-Nk5rknT6n99oPKX';
