@@ -41,10 +41,18 @@ async function init() {
         const result = await tonweb.dns.getWalletAddress('foundation.ton');
         console.log('foundation.ton wallet: ', result?.toString(true, true, true));
 
-        //const cell = await tonweb.dns.resolve('foundation.ton', TonWeb.dns.DNS_CATEGORY_NEXT_RESOLVER, true);
-        const cell = await tonweb.dns.resolve('foundation.ton', 'site', false);
-        console.log('foundation.ton site ADNL address: ', cell.toHex());
-        //const cell = await tonweb.dns.resolve(s, TonWeb.dns.DNS_CATEGORY_NEXT_RESOLVER, true);
+        const siteAddr = await tonweb.dns.resolve('foundation.ton', 'site', false);
+        console.log('foundation.ton site ADNL address: ', siteAddr.toHex());
+
+        const storage = await tonweb.dns.resolve('foundation.ton', TonWeb.dns.DNS_CATEGORY_STORAGE);
+        console.log('foundation.ton storage: ', storage.toHex())
+
+        const nextResolver = await tonweb.dns.resolve('foundation.ton', TonWeb.dns.DNS_CATEGORY_NEXT_RESOLVER);
+        console.log('foundation.ton next resolver: ', nextResolver)
+
+        const records = await tonweb.dns.resolve('foundation.ton');
+        console.log('foundation.ton records cell (dict): ', records.print())
+        console.log('foundation.ton records cell (boc): ', TonWeb.utils.bytesToBase64(await records.toBoc()))
     }
 
     const seed = TonWeb.utils.base64ToBytes('vt58J2v6FaSuXFGcyGtqT5elpVxcZ+I1zgu/GUfA5uY=');
