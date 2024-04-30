@@ -5,7 +5,6 @@ const {DnsCollection, DnsItem} = TonWeb.dns;
 const {Cell} = TonWeb.boc;
 const {Contract} = TonWeb;
 const {createOffchainUriCell} = require("TonWeb/src/contract/token/nft/NftUtils.js");
-console.log(Contract);
 
 class DnsRoot extends Contract {
     constructor(provider) {
@@ -39,13 +38,13 @@ async function init() {
         const rootAddress = await tonweb.dns.getRootDnsAddress();
         console.log('rootAddress=', rootAddress.toString(true, true, true));
 
-        const s = 'apple.ton';
-
-        //const cell = await tonweb.dns.resolve(s, TonWeb.dns.DNS_CATEGORY_NEXT_RESOLVER, true);
-        //console.log(cell.toString(true, true, true));
-
         const result = await tonweb.dns.getWalletAddress('foundation.ton');
-        console.log(result?.toString(true, true, true));
+        console.log('foundation.ton wallet: ', result?.toString(true, true, true));
+
+        //const cell = await tonweb.dns.resolve('foundation.ton', TonWeb.dns.DNS_CATEGORY_NEXT_RESOLVER, true);
+        const cell = await tonweb.dns.resolve('foundation.ton', 'site', false);
+        console.log('foundation.ton site address: ', cell);
+        //const cell = await tonweb.dns.resolve(s, TonWeb.dns.DNS_CATEGORY_NEXT_RESOLVER, true);
     }
 
     const seed = TonWeb.utils.base64ToBytes('vt58J2v6FaSuXFGcyGtqT5elpVxcZ+I1zgu/GUfA5uY=');
